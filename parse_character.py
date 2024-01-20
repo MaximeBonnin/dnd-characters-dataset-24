@@ -1,153 +1,25 @@
-import requests
-
-TARGET = {
-    "char_id": None,
-    "name": None,
-    "baseHitPoints": None,
-    "alignmentId": None,
-    "stats": {
-        "STR": None,
-        "DEX": None,
-        "CON": None,
-        "INT": None,
-        "WIS": None,
-        "CHA": None,
-    },
-    "bonusStats": {
-        "STR": None,
-        "DEX": None,
-        "CON": None,
-        "INT": None,
-        "WIS": None,
-        "CHA": None,
-    },
-    "overrideStats": {
-        "STR": None,
-        "DEX": None,
-        "CON": None,
-        "INT": None,
-        "WIS": None,
-        "CHA": None,
-    },
-    "hasCustomBackground": None,
-    "background": None,
-    "race": {
-        "isSubRace": None,
-        "baseRaceName": None,
-        "fullName": None,
-        "isHomebrew": None,
-        "isLegacy": None,
-        "racialTraits": [
-            {
-                "id": None,
-                "name": None,
-                "choices": []
-            }
-        ]
-    },
-    "preferences": {
-      "useHomebrewContent": None,
-      "progressionType": None,
-      "encumbranceType": None,
-      "hitPointType": None,
-      "privacyType": None,
-      "sharingType": None,
-      "abilityScoreDisplayType": None,
-      "enforceFeatRules": None,
-      "enforceMulticlassRules": None,
-      "enableDarkMode": None,
-      "startingEquipmentType": None,
-      "abilityScoreType": None,
-    },
-    "lifestyle": None,
-    "inventory": [
-        {
-          "magic": None,
-          "name": None,
-          "type": None,
-          "rarity": None,
-          "isHomebrew": None
-        }
-    ],
-    "currencies": {
-      "cp": None,
-      "sp": None,
-      "gp": None,
-      "ep": None,
-      "pp": None
-    },
-    "classes": [
-        {
-            "level": None, 
-            "isStartingClass": None,
-            "name": None,
-            "isHomebrew": None,
-            "subclassDefinition": {
-                "name": None,
-                "isHomebrew": None,
-                "subclassTraits": [
-                    {
-                        "id": None,
-                        "name": None,
-                        "choices": [
-                            None
-                        ]
-                    }
-            ]
-            },
-            "classTraits": [
-                {
-                    "id": None,
-                    "name": None,
-                    "choices": [
-                        None
-                    ]
-                }
-            ]
-        }
-    ],
-    "feats": [
-        {
-            "name": None,
-            "isHomebrew": None
-        }
-    ],
-    "activeSourceCategories": [],
-    "spells": [],
-    "customItems": [],
-    "dateModified": None,
-    "providedFrom": None,
-    "statusSlug": None,
-}
-
-def get_character(id:str) -> requests.Response:
-
-    response = requests.get("https://character-service.dndbeyond.com/character/v5/character/" + id + "?includeCustomItems=true")
-
-    print(f"{id}: {response.status_code}")
-
-    return response
 
 
-def parse_character(char_id:str) -> dict:
+def parse_character(reponse_tuple:tuple) -> dict:
 
-    r = get_character(char_id)
+    char_id, status_code, data = reponse_tuple
+    #print(f"Parsing {char_id}")
 
     # guard clause if fail
-    if r.status_code != 200:
+    if status_code != 200:
         failed_dict = {
             "char_id": char_id,
-            "status_code": r.status_code
+            "status_code": status_code
         }
         return failed_dict
 
 
     # status = 200
-    response_data : dict = r.json()["data"]
+    response_data : dict = data["data"]
     out = {}
 
     out["char_id"] = char_id
-    out["status_code"] = r.status_code
+    out["status_code"] = status_code
     out["name"] = response_data.get("name")
 
     out["REPLACE_THIS"] = response_data.get("REPLACE_THIS")
@@ -171,12 +43,14 @@ def parse_character(char_id:str) -> dict:
     # background 
     if response_data.get("background"):
         out["background"] = {
-            "name": response_data["background"].get("definition", {}).get("name"),
             "hasCustomBackground": response_data["background"].get("hasCustomBackground"),
             "backgroundFeatures": []
         }
+        if response_data["background"].get("definition"):
+            out["background"]["name"] = response_data["background"]["definition"].get("name")
+
         if response_data["background"].get("hasCustomBackground"):
-            out["background"]["name"] = response_data["background"].get("customBackground", {}).get("name")
+            out["background"]["name"] = response_data["background"]["customBackground"].get("name")
 
         for bg_feature in response_data["modifiers"].get("background", []):
             values = {
@@ -313,8 +187,10 @@ def parse_character(char_id:str) -> dict:
     for source in ["race", "class", "background", "item", "feat"]:
         if not response_data["spells"].get(source):
             continue
-        
+
         for spell in response_data["spells"].get(source, []):
+            if not spell.get("definition"):
+                continue
             values = {
                 "name": spell["definition"].get("name"),
                 "isHomebrew": spell["definition"].get("isHomebrew"),
