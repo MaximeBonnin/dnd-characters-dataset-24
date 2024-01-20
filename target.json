@@ -1,0 +1,112 @@
+{
+  "id": None,
+  "name": None,
+  "baseHitPoints": None,
+  "alignmentId": None,
+  "stats": {
+      "STR": None,
+      "DEX": None,
+      "CON": None,
+      "INT": None,
+      "WIS": None,
+      "CHA": None,
+  },
+  "bonusStats": {
+      "STR": None,
+      "DEX": None,
+      "CON": None,
+      "INT": None,
+      "WIS": None,
+      "CHA": None,
+  },
+  "overrideStats": None,
+  "hasCustomBackground": None,
+  "background": None,
+  "race": {
+      "isSubRace": None,
+      "baseRaceName": None,
+      "fullName": None,
+      "isHomebrew": None,
+      "isLegacy": None,
+      "racialTraits": [
+          {
+              "id": None,
+              "name": None,
+              "choices": []
+          }
+      ]
+  },
+  "preferences": {
+    "useHomebrewContent": None,
+    "progressionType": None,
+    "encumbranceType": None,
+    "hitPointType": None,
+    "privacyType": None,
+    "sharingType": None,
+    "abilityScoreDisplayType": None,
+    "enforceFeatRules": None,
+    "enforceMulticlassRules": None,
+    "enableDarkMode": None,
+    "startingEquipmentType": None,
+    "abilityScoreType": None,
+  },
+  "lifestyle": None,
+  "inventory": [
+      {
+        "magic": None,
+        "name": None,
+        "type": None,
+        "rarity": None,
+        "isHomebrew": None
+      }
+  ],
+  "currencies": {
+    "cp": None,
+    "sp": None,
+    "gp": None,
+    "ep": None,
+    "pp": None
+  },
+  "classes": [
+      {
+          "level": None, 
+          "isStartingClass": None,
+          "name": None,
+          "isHomebrew": None,
+          "subclassDefinition": {
+              "name": None,
+              "isHomebrew": None,
+              "subclassTraits": [
+                  {
+                      "id": None,
+                      "name": None,
+                      "choices": [
+                          None
+                      ]
+                  }
+          ]
+          },
+          "classTraits": [
+              {
+                  "id": None,
+                  "name": None,
+                  "choices": [
+                      None
+                  ]
+              }
+          ]
+      }
+  ],
+  "feats": [
+      {
+          "name": None,
+          "isHomebrew": None
+      }
+  ],
+  "activeSourceCategories": [],
+  "spells": [],
+  "customItems": [],
+  "dateModified": None,
+  "providedFrom": None,
+  "statusSlug": None,
+}
