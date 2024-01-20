@@ -1,112 +1,763 @@
 {
-  "id": None,
-  "name": None,
-  "baseHitPoints": None,
-  "alignmentId": None,
+  "char_id": "25755022",
+  "status_code": 200,
+  "name": "Vladimir Poutine",
+  "REPLACE_THIS": null,
+  "baseHitPoints": 70,
+  "bonusHitPoints": null,
+  "overrideHitPoints": 73,
+  "currentXp": 48000,
+  "alignmentId": null,
   "stats": {
-      "STR": None,
-      "DEX": None,
-      "CON": None,
-      "INT": None,
-      "WIS": None,
-      "CHA": None,
+    "STR": 10,
+    "DEX": 15,
+    "CON": 12,
+    "INT": 13,
+    "WIS": 14,
+    "CHA": 8
   },
   "bonusStats": {
-      "STR": None,
-      "DEX": None,
-      "CON": None,
-      "INT": None,
-      "WIS": None,
-      "CHA": None,
+    "STR": 0,
+    "DEX": 0,
+    "CON": 0,
+    "INT": 0,
+    "WIS": 0,
+    "CHA": 0
   },
-  "overrideStats": None,
-  "hasCustomBackground": None,
-  "background": None,
+  "overrideStats": {
+    "STR": 0,
+    "DEX": 0,
+    "CON": 0,
+    "INT": 0,
+    "WIS": 0,
+    "CHA": 0
+  },
+  "background": {
+    "name": "Gladiator",
+    "hasCustomBackground": false,
+    "backgroundFeatures": [
+      {
+        "name": "intimidation proficiency",
+        "type": "proficiency",
+        "subType": "intimidation"
+      },
+      {
+        "name": "performance proficiency",
+        "type": "proficiency",
+        "subType": "performance"
+      },
+      {
+        "name": "disguise-kit proficiency",
+        "type": "proficiency",
+        "subType": "disguise-kit"
+      },
+      {
+        "name": "flute proficiency",
+        "type": "proficiency",
+        "subType": "flute"
+      }
+    ]
+  },
   "race": {
-      "isSubRace": None,
-      "baseRaceName": None,
-      "fullName": None,
-      "isHomebrew": None,
-      "isLegacy": None,
-      "racialTraits": [
+    "isSubRace": true,
+    "baseRaceName": "Human",
+    "subRaceShortName": "Variant",
+    "fullName": "Variant Human",
+    "isHomebrew": false,
+    "isLegacy": false,
+    "racialTraits": [
+      {
+        "id": 64,
+        "name": "Languages",
+        "choices": [
           {
-              "id": None,
-              "name": None,
-              "choices": []
+            "name": "common language",
+            "type": "language",
+            "subType": "common"
+          },
+          {
+            "name": "elvish language",
+            "type": "language",
+            "subType": "elvish"
           }
-      ]
+        ]
+      },
+      {
+        "id": 150,
+        "name": "Age"
+      },
+      {
+        "id": 152,
+        "name": "Size"
+      },
+      {
+        "id": 153,
+        "name": "Speed"
+      },
+      {
+        "id": 65,
+        "name": "Skills",
+        "choices": [
+          {
+            "name": "investigation proficiency",
+            "type": "proficiency",
+            "subType": "investigation"
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "name": "Ability Score Increase",
+        "choices": [
+          {
+            "name": "dexterity-score bonus",
+            "type": "bonus",
+            "subType": "dexterity-score"
+          },
+          {
+            "name": "intelligence-score bonus",
+            "type": "bonus",
+            "subType": "intelligence-score"
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "name": "Feat"
+      }
+    ]
   },
   "preferences": {
-    "useHomebrewContent": None,
-    "progressionType": None,
-    "encumbranceType": None,
-    "hitPointType": None,
-    "privacyType": None,
-    "sharingType": None,
-    "abilityScoreDisplayType": None,
-    "enforceFeatRules": None,
-    "enforceMulticlassRules": None,
-    "enableDarkMode": None,
-    "startingEquipmentType": None,
-    "abilityScoreType": None,
+    "useHomebrewContent": true,
+    "progressionType": 1,
+    "encumbranceType": 1,
+    "ignoreCoinWeight": true,
+    "hitPointType": 1,
+    "showUnarmedStrike": true,
+    "showScaledSpells": true,
+    "primarySense": 5,
+    "primaryMovement": 1,
+    "privacyType": 3,
+    "sharingType": 2,
+    "abilityScoreDisplayType": 2,
+    "enforceFeatRules": true,
+    "enforceMulticlassRules": true,
+    "enableOptionalClassFeatures": false,
+    "enableOptionalOrigins": false,
+    "enableDarkMode": false,
+    "enableContainerCurrency": false
   },
-  "lifestyle": None,
+  "lifestyle": null,
   "inventory": [
-      {
-        "magic": None,
-        "name": None,
-        "type": None,
-        "rarity": None,
-        "isHomebrew": None
-      }
+    {
+      "magic": true,
+      "name": "Robe of Useful Items",
+      "type": "Wondrous item",
+      "rarity": "Uncommon",
+      "isHomebrew": false
+    },
+    {
+      "magic": true,
+      "name": "Longbow, +1",
+      "type": "Longbow",
+      "rarity": "Uncommon",
+      "isHomebrew": false
+    },
+    {
+      "magic": true,
+      "name": "Longbow, +1",
+      "type": "Longbow",
+      "rarity": "Uncommon",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Shield",
+      "type": "",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Leather",
+      "type": "",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Handaxe",
+      "type": "Handaxe",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Handaxe",
+      "type": "Handaxe",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Whip",
+      "type": "Whip",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Longbow",
+      "type": "Longbow",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Arrows",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Backpack",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Clothes, Costume",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Crowbar",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Hammer",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Piton",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Rations (1 day)",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Rope, Hempen (50 feet)",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Tinderbox",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Torch",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Waterskin",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    },
+    {
+      "magic": false,
+      "name": "Whistle-Stick",
+      "type": "Gear",
+      "rarity": "Common",
+      "isHomebrew": false
+    }
   ],
   "currencies": {
-    "cp": None,
-    "sp": None,
-    "gp": None,
-    "ep": None,
-    "pp": None
+    "cp": 0,
+    "sp": 0,
+    "gp": 15,
+    "ep": 0,
+    "pp": 0
   },
   "classes": [
-      {
-          "level": None, 
-          "isStartingClass": None,
-          "name": None,
-          "isHomebrew": None,
-          "subclassDefinition": {
-              "name": None,
-              "isHomebrew": None,
-              "subclassTraits": [
-                  {
-                      "id": None,
-                      "name": None,
-                      "choices": [
-                          None
-                      ]
-                  }
-          ]
-          },
-          "classTraits": [
+    {
+      "level": 8,
+      "isStartingClass": true,
+      "name": "Fighter",
+      "isHomebrew": false,
+      "subclassDefinition": {
+        "name": "Arcane Archer",
+        "isHomebrew": false,
+        "classFeatures": [
+          {
+            "id": 674,
+            "name": "Arcane Archer Lore",
+            "choices": [
               {
-                  "id": None,
-                  "name": None,
-                  "choices": [
-                      None
-                  ]
+                "name": "nature proficiency",
+                "type": "proficiency",
+                "subType": "nature"
               }
-          ]
+            ]
+          },
+          {
+            "id": 675,
+            "name": "Arcane Shot"
+          },
+          {
+            "id": 677,
+            "name": "Magic Arrow"
+          },
+          {
+            "id": 678,
+            "name": "Curving Shot"
+          },
+          {
+            "id": 680,
+            "name": "Ever-Ready Shot"
+          },
+          {
+            "id": 682,
+            "name": "Arcane Shot Options",
+            "choices": [
+              {
+                "name": "Piercing Arrow"
+              },
+              {
+                "name": "Seeking Arrow"
+              },
+              {
+                "name": "Banishing Arrow"
+              }
+            ]
+          },
+          {
+            "id": 191,
+            "name": "Fighting Style",
+            "choices": [
+              {
+                "name": "Archery"
+              }
+            ]
+          },
+          {
+            "id": 192,
+            "name": "Second Wind"
+          },
+          {
+            "id": 193,
+            "name": "Action Surge"
+          },
+          {
+            "id": 194,
+            "name": "Martial Archetype",
+            "choices": [
+              {
+                "name": "subclass set",
+                "type": "set",
+                "subType": "subclass"
+              }
+            ]
+          },
+          {
+            "id": 195,
+            "name": "Ability Score Improvement",
+            "choices": [
+              {
+                "name": "choose-an-ability-score bonus",
+                "type": "bonus",
+                "subType": "choose-an-ability-score"
+              },
+              {
+                "name": "choose-an-ability-score bonus",
+                "type": "bonus",
+                "subType": "choose-an-ability-score"
+              }
+            ]
+          },
+          {
+            "id": 196,
+            "name": "Extra Attack",
+            "choices": [
+              {
+                "name": "extra-attacks set",
+                "type": "set",
+                "subType": "extra-attacks"
+              }
+            ]
+          },
+          {
+            "id": 197,
+            "name": "Indomitable"
+          },
+          {
+            "id": 199,
+            "name": "Ability Score Improvement",
+            "choices": [
+              {
+                "name": "dexterity-score bonus",
+                "type": "bonus",
+                "subType": "dexterity-score"
+              },
+              {
+                "name": "dexterity-score bonus",
+                "type": "bonus",
+                "subType": "dexterity-score"
+              }
+            ]
+          },
+          {
+            "id": 200,
+            "name": "Ability Score Improvement",
+            "choices": [
+              {
+                "name": "dexterity-score bonus",
+                "type": "bonus",
+                "subType": "dexterity-score"
+              },
+              {
+                "name": "dexterity-score bonus",
+                "type": "bonus",
+                "subType": "dexterity-score"
+              }
+            ]
+          },
+          {
+            "id": 201,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 202,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 203,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 204,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 205,
+            "name": "Extra Attack"
+          },
+          {
+            "id": 206,
+            "name": "Extra Attack"
+          },
+          {
+            "id": 463,
+            "name": "Proficiencies",
+            "choices": [
+              {
+                "name": "light-armor proficiency",
+                "type": "proficiency",
+                "subType": "light-armor"
+              },
+              {
+                "name": "medium-armor proficiency",
+                "type": "proficiency",
+                "subType": "medium-armor"
+              },
+              {
+                "name": "heavy-armor proficiency",
+                "type": "proficiency",
+                "subType": "heavy-armor"
+              },
+              {
+                "name": "shields proficiency",
+                "type": "proficiency",
+                "subType": "shields"
+              },
+              {
+                "name": "simple-weapons proficiency",
+                "type": "proficiency",
+                "subType": "simple-weapons"
+              },
+              {
+                "name": "martial-weapons proficiency",
+                "type": "proficiency",
+                "subType": "martial-weapons"
+              },
+              {
+                "name": "strength-saving-throws proficiency",
+                "type": "proficiency",
+                "subType": "strength-saving-throws"
+              },
+              {
+                "name": "constitution-saving-throws proficiency",
+                "type": "proficiency",
+                "subType": "constitution-saving-throws"
+              },
+              {
+                "name": "acrobatics proficiency",
+                "type": "proficiency",
+                "subType": "acrobatics"
+              },
+              {
+                "name": "perception proficiency",
+                "type": "proficiency",
+                "subType": "perception"
+              }
+            ]
+          },
+          {
+            "id": 535,
+            "name": "Hit Points"
+          }
+        ]
       }
+    },
+    {
+      "level": 3,
+      "isStartingClass": false,
+      "name": "Ranger",
+      "isHomebrew": false,
+      "subclassDefinition": {
+        "name": "Monster Slayer",
+        "isHomebrew": false,
+        "classFeatures": [
+          {
+            "id": 728,
+            "name": "Monster Slayer Magic"
+          },
+          {
+            "id": 729,
+            "name": "Hunter\u2019s Sense"
+          },
+          {
+            "id": 730,
+            "name": "Slayer\u2019s Prey"
+          },
+          {
+            "id": 731,
+            "name": "Supernatural Defense"
+          },
+          {
+            "id": 732,
+            "name": "Magic-User\u2019s Nemesis"
+          },
+          {
+            "id": 733,
+            "name": "Slayer\u2019s Counter"
+          },
+          {
+            "id": 294,
+            "name": "Favored Enemy",
+            "choices": [
+              {
+                "name": "Humanoids"
+              }
+            ]
+          },
+          {
+            "id": 295,
+            "name": "Natural Explorer",
+            "choices": [
+              {
+                "name": "Underdark"
+              }
+            ]
+          },
+          {
+            "id": 296,
+            "name": "Fighting Style",
+            "choices": [
+              {
+                "name": "Blind Fighting"
+              }
+            ]
+          },
+          {
+            "id": 297,
+            "name": "Spellcasting"
+          },
+          {
+            "id": 298,
+            "name": "Ranger Archetype",
+            "choices": [
+              {
+                "name": "subclass set",
+                "type": "set",
+                "subType": "subclass"
+              }
+            ]
+          },
+          {
+            "id": 299,
+            "name": "Primeval Awareness"
+          },
+          {
+            "id": 300,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 301,
+            "name": "Extra Attack"
+          },
+          {
+            "id": 302,
+            "name": "Land\u2019s Stride"
+          },
+          {
+            "id": 303,
+            "name": "Hide in Plain Sight"
+          },
+          {
+            "id": 304,
+            "name": "Vanish"
+          },
+          {
+            "id": 305,
+            "name": "Feral Senses"
+          },
+          {
+            "id": 306,
+            "name": "Foe Slayer"
+          },
+          {
+            "id": 309,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 310,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 311,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 312,
+            "name": "Ability Score Improvement"
+          },
+          {
+            "id": 466,
+            "name": "Proficiencies",
+            "choices": [
+              {
+                "name": "light-armor proficiency",
+                "type": "proficiency",
+                "subType": "light-armor"
+              },
+              {
+                "name": "medium-armor proficiency",
+                "type": "proficiency",
+                "subType": "medium-armor"
+              },
+              {
+                "name": "shields proficiency",
+                "type": "proficiency",
+                "subType": "shields"
+              },
+              {
+                "name": "simple-weapons proficiency",
+                "type": "proficiency",
+                "subType": "simple-weapons"
+              },
+              {
+                "name": "martial-weapons proficiency",
+                "type": "proficiency",
+                "subType": "martial-weapons"
+              },
+              {
+                "name": "strength-saving-throws proficiency",
+                "type": "proficiency",
+                "subType": "strength-saving-throws"
+              },
+              {
+                "name": "dexterity-saving-throws proficiency",
+                "type": "proficiency",
+                "subType": "dexterity-saving-throws"
+              },
+              {
+                "name": "survival proficiency",
+                "type": "proficiency",
+                "subType": "survival"
+              },
+              {
+                "name": "choose-a-ranger-skill proficiency",
+                "type": "proficiency",
+                "subType": "choose-a-ranger-skill"
+              },
+              {
+                "name": "choose-a-ranger-skill proficiency",
+                "type": "proficiency",
+                "subType": "choose-a-ranger-skill"
+              }
+            ]
+          },
+          {
+            "id": 538,
+            "name": "Hit Points"
+          }
+        ]
+      }
+    }
   ],
   "feats": [
-      {
-          "name": None,
-          "isHomebrew": None
-      }
+    {
+      "name": "Mobile",
+      "isHomebrew": false
+    },
+    {
+      "name": "Sharpshooter",
+      "isHomebrew": false
+    }
   ],
-  "activeSourceCategories": [],
-  "spells": [],
-  "customItems": [],
-  "dateModified": None,
-  "providedFrom": None,
-  "statusSlug": None,
+  "activeSourceCategories": [
+    1,
+    7,
+    8,
+    14
+  ],
+  "spells": [
+    {
+      "name": "Speak with Animals",
+      "isHomebrew": false,
+      "prepared": null,
+      "from": "class"
+    },
+    {
+      "name": "Protection from Evil and Good",
+      "isHomebrew": false,
+      "prepared": null,
+      "from": "class"
+    },
+    {
+      "name": "Druidcraft",
+      "isHomebrew": false,
+      "prepared": null,
+      "from": "class"
+    }
+  ],
+  "dateModified": "2023-06-15T19:17:47.8Z",
+  "providedFrom": "storage",
+  "statusSlug": "active"
 }
