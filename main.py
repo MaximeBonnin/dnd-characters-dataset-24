@@ -37,8 +37,8 @@ def get_character(id):
 
     # pprint(data_dict)
 
-    with open("sample_5.json", "w") as f:
-        f.write(json.dumps(data_dict, indent=2))
+    #with open("sample_5.json", "w") as f:
+    #    f.write(json.dumps(data_dict, indent=2))
 
     return data_dict
 
