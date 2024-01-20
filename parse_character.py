@@ -22,8 +22,6 @@ def parse_character(reponse_tuple:tuple) -> dict:
     out["status_code"] = status_code
     out["name"] = response_data.get("name")
 
-    out["REPLACE_THIS"] = response_data.get("REPLACE_THIS")
-
     out["baseHitPoints"] = response_data.get("baseHitPoints")
     out["bonusHitPoints"] = response_data.get("bonusHitPoints")
     out["overrideHitPoints"] = response_data.get("overrideHitPoints")
