@@ -2,14 +2,17 @@
 
 After creating my [first Version of a dataset with 1.2 Million Characters](https://www.kaggle.com/datasets/maximebonnin/dnd-characters-test) pulled from dndbeyond, I now want to try again but get more characters and more detailled info about them. My general method will be the same as before (using the dndbeyond backend API to scrape characters) but I want to save them in a database this time. Last time I simply created csv files which were prone to crashing and getting corrupted when my code / hardware would fail. Now I would like to set this up in way where I can run my script in a VM on GCP and have it save each character (or batch of them) every few seconds. This requires both additional setup and analysis to find a good way to represent the data.
 
+> [!NOTE]
+> I was a bit worried about how WotC would react to this so I sent them an E-Mail and they said: 
+>>"We are responding to let you know that upon review of the description of your project, it looks like your request is covered by our Wizards of the Coast Fan Content Policy, which you can find [here](https://company.wizards.com/en/legal/fancontentpolicy)."
 
 ## Roadmap
 - [x] Get sample character reponse from API to analyze
 - [x] Create goal for what data to extract and how to save it
 - [X] Write python script to get all data
-- [ ] Set up GCP environment with VM to run script
-- [ ] Publish dataset on Kaggle
+- [X] Set up GCP environment with VM to run script
 - [ ] Analyze dataset
+- [ ] Publish dataset on Kaggle
 
 ### Get sample character reponse from API to analyze
 This step was easy as I pretty much just redid what I had done before. By checking the network tab while loading a dndbeyond character, one can see the backend API calls being made to this endpoint: ```https://character-service.dndbeyond.com/character/v5/character/{YOUR_CHARACTER_ID}?includeCustomItems=true```
@@ -30,3 +33,6 @@ The [main.py](main.py) starts the process. There one can set the amount of chara
 According to [this article on dndbeyond](https://www.dndbeyond.com/posts/1648-2023-unrolled-a-look-back-at-a-year-of-adventure?page=5) there were 180 million characters / NPCs played last year with 6 million being added. Now, I don't quite believe the 180 million be relevant for me here (famous last words?) but I expect that the number of characters is like 30 - 50 million.
 
 My first few tests tell me that it takes about 30 seconds to get 10.000 characters on my local machine. This would equal about 40 hours or so of running perfectly smooth to get 50 million characters. Doesn't sound impossible but I would really like to try and get this whole thing to run on a GCP cluster or maybe as a batch job in Cloud Run. 
+
+So I set up a GCP VM (E2 with basic settings and allow HTTPs) hosted in the US because I assume that the dndbeyond servers are there as well. I Have also added the IP-Address of this VM to the allowed IPs for my MongoDB collection. I wrote down all steps after the creation of the VM in [deployme.sh](deployme.sh) so anyone can follow. Basically it installs all required tools, clones this repo and then runs the script. Now it is just a question of time until I have all the data...
+
