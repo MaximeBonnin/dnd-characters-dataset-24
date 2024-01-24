@@ -102,7 +102,7 @@ def main():
     if confirm == "Y":
         logging.info(f"{batch_size*number_of_batches} requests confirmed")
         for i in range(number_of_batches):
-            logging(f"Batch {i} starting...")
+            logging.info(f"Batch {i} starting...")
             # Get the database
             dbname = get_database()
             collection_name = dbname["characters"]
