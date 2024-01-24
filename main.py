@@ -100,13 +100,16 @@ def main():
     logging.info(f"{start=} {batch_size=} {number_of_batches=}")
     confirm = input(f"This will send {batch_size*number_of_batches} requests. Press 'Y' to confirm\n")
     if confirm == "Y":
-        # Get the database
-        dbname = get_database()
-        collection_name = dbname["characters"]
+        logging.info(f"{batch_size*number_of_batches} requests confirmed")
+        for i in range(number_of_batches):
+            logging(f"Batch {i} starting...")
+            # Get the database
+            dbname = get_database()
+            collection_name = dbname["characters"]
 
-        char_ids = ["{:08d}".format(i) for i in range(start, start + batch_size)]
-        #print(char_ids)
-        process_character_batch(db_collection=collection_name, batch_ids=char_ids)
+            char_ids = ["{:08d}".format(i) for i in range(start, start + batch_size)]
+            #print(char_ids)
+            process_character_batch(db_collection=collection_name, batch_ids=char_ids)
     
 
 
