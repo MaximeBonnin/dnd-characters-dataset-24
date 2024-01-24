@@ -1,4 +1,4 @@
-
+import time
 
 def parse_character(reponse_tuple:tuple) -> dict:
 
@@ -202,6 +202,7 @@ def parse_character(reponse_tuple:tuple) -> dict:
     out["dateModified"] = response_data.get("dateModified")
     out["providedFrom"] = response_data.get("providedFrom")
     out["statusSlug"] = response_data.get("statusSlug")
+    out["scrapeTime"] = time.time()
 
 
     return out

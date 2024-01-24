@@ -93,6 +93,7 @@ def process_character_batch(db_collection, batch_ids:list):
 def main():
     logging.info("Starting...")
 
+    start_at = 1_000_000
     batch_size = 10_000
     number_of_batches = 100
 
@@ -101,7 +102,7 @@ def main():
     if confirm == "Y":
         logging.info(f"{batch_size*number_of_batches} requests confirmed")
         for i in range(number_of_batches):
-            start_id = batch_size * i
+            start_id = start_at + batch_size * i
             end_id = start_id + batch_size
             logging.info(f"Batch {i + 1} starting: {start_id} to {end_id}")
             # Get the database
