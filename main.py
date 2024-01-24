@@ -93,21 +93,22 @@ def process_character_batch(db_collection, batch_ids:list):
 def main():
     logging.info("Starting...")
 
-    start = 0
     batch_size = 10_000
     number_of_batches = 100
 
-    logging.info(f"{start=} {batch_size=} {number_of_batches=}")
+    logging.info(f"{batch_size=} {number_of_batches=}")
     confirm = input(f"This will send {batch_size*number_of_batches} requests. Press 'Y' to confirm\n")
     if confirm == "Y":
         logging.info(f"{batch_size*number_of_batches} requests confirmed")
         for i in range(number_of_batches):
-            logging.info(f"Batch {i} starting...")
+            start_id = batch_size * i
+            end_id = start_id + batch_size
+            logging.info(f"Batch {i + 1} starting: {start_id} to {end_id}")
             # Get the database
             dbname = get_database()
             collection_name = dbname["characters"]
 
-            char_ids = ["{:08d}".format(i) for i in range(start, start + batch_size)]
+            char_ids = ["{:08d}".format(char_id) for char_id in range(start_id, end_id)]
             #print(char_ids)
             process_character_batch(db_collection=collection_name, batch_ids=char_ids)
     
