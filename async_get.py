@@ -1,18 +1,19 @@
 import asyncio
 import aiohttp
+import backoff
 
 
-async def async_get(
-    session: aiohttp.ClientSession,
-    char_id: str,
-    **kwargs
-) -> dict:
+@backoff.on_exception(backoff.expo,
+                      aiohttp.ClientError,
+                      max_tries=8,
+                      giveup=lambda e: e.status == 404)
+async def async_get(session, char_id, **kwargs):
     url = f"https://character-service.dndbeyond.com/character/v5/character/{char_id}/"
-    #print(f"Requesting {url}")
-    resp = await session.request('GET', url=url, **kwargs)
-    data = await resp.json()
-    #print(f"Received data for {char_id}: {resp.status}")
-    return (char_id, resp.status, data)
+    async with session.get(url, **kwargs) as resp:
+        if resp.status == 429:  # HTTP 429 is the status code for Too Many Requests
+            raise aiohttp.ClientError
+        data = await resp.json()
+        return (char_id, resp.status, data)
 
 
 async def get_chars_by_id(char_ids, **kwargs):
