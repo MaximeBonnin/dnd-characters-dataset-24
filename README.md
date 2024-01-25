@@ -11,6 +11,7 @@ After creating my [first Version of a dataset with 1.2 Million Characters](https
 - [x] Create goal for what data to extract and how to save it
 - [X] Write python script to get all data
 - [X] Set up GCP environment with VM to run script
+- [ ] Actually get the data
 - [ ] Analyze dataset
 - [ ] Publish dataset on Kaggle
 
