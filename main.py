@@ -77,8 +77,11 @@ def process_character_batch(db_collection, batch_ids:list):
         logging.info(f"[{round(time.time()-start_time, 2)}] Parsing data...")
         list_of_parsed_characters = []
         for c in reponse_list:
-            parsed_char = parse_character(reponse_tuple=c)
-            list_of_parsed_characters.append(parsed_char)
+            try:
+                parsed_char = parse_character(reponse_tuple=c)
+                list_of_parsed_characters.append(parsed_char)
+            except Exception as e:
+                logging.error(e)
 
         # save batch to DB
         logging.info(f"[{round(time.time()-start_time, 2)}] Saving data...")
@@ -93,12 +96,13 @@ def process_character_batch(db_collection, batch_ids:list):
 def main():
     logging.info("Starting...")
 
-    start_at = 1_000_000
-    batch_size = 10_000
-    number_of_batches = 100
+    n_to_fetch = int(input(f"Number of characters to fetch:\n"))
+    start_at = int(input(f"Start at:\n"))
+    batch_size = int(input(f"Batch size:\n"))
+    number_of_batches = n_to_fetch // batch_size
 
-    logging.info(f"{batch_size=} {number_of_batches=}")
-    confirm = input(f"This will send {batch_size*number_of_batches} requests. Press 'Y' to confirm\n")
+    logging.info(f"{start_at=} {batch_size=} {number_of_batches=} {n_to_fetch=}")
+    confirm = input(f"This will send {number_of_batches * batch_size:,} requests in {number_of_batches} batches of {batch_size} starting at {start_at}. Press 'Y' to confirm\n")
     if confirm == "Y":
         logging.info(f"{batch_size*number_of_batches} requests confirmed")
         for i in range(number_of_batches):

@@ -50,6 +50,7 @@ def parse_character(reponse_tuple:tuple) -> dict:
         if response_data["background"].get("hasCustomBackground"):
             out["background"]["name"] = response_data["background"]["customBackground"].get("name")
 
+        values = {}
         for bg_feature in response_data["modifiers"].get("background", []):
             values = {
                 "name": bg_feature.get("subType", "") + " " + bg_feature.get("type", ""),
@@ -75,6 +76,7 @@ def parse_character(reponse_tuple:tuple) -> dict:
             "racialTraits": []
         }
 
+        traint_def = {}
         for trait in response_data["race"].get("racialTraits", []):
             traint_def = {
                 "id": trait["definition"].get("id"), 
@@ -162,7 +164,7 @@ def parse_character(reponse_tuple:tuple) -> dict:
                     classFeatures_def.pop("choices")
 
                 #TODO this is a bit late and could be done better
-                if traint_def not in parsed_class["subclassDefinition"]["classFeatures"]:
+                if classFeatures_def not in parsed_class["subclassDefinition"]["classFeatures"]:
                     parsed_class["subclassDefinition"]["classFeatures"].append(classFeatures_def)
 
         out["classes"].append(parsed_class)
