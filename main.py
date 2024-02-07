@@ -17,12 +17,12 @@ logging.basicConfig(level=logging.INFO,
 
 
 # this is terrible and I should learn how to use env vars
-from my_secrets import user_name, password
+from my_secrets import user_name, password, host
 
 def get_database():
  
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
-    CONNECTION_STRING = f"mongodb://{urllib.parse.quote(user_name)}:{urllib.parse.quote(password)}@host:27017/"
+    CONNECTION_STRING = f"mongodb://{urllib.parse.quote(user_name)}:{urllib.parse.quote(password)}@{host}:27017/"
 
     try:
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
