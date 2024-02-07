@@ -8,6 +8,7 @@ import aiohttp
 from async_get import get_chars_by_id, async_get
 import time
 import logging
+import urllib
 import io
 logging.basicConfig(level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -21,7 +22,7 @@ from my_secrets import user_name, password
 def get_database():
  
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
-    CONNECTION_STRING = f"mongodb+srv://{user_name}:{password}@cluster0.qdbpxyz.mongodb.net/?retryWrites=true&w=majority"
+    CONNECTION_STRING = f"mongodb://{urllib.parse.quote(user_name)}:{urllib.parse.quote(password)}@host:27017/"
 
     try:
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
@@ -31,7 +32,7 @@ def get_database():
         logging.error(e)
 
     # Create the database for our example (we will use the same database throughout the tutorial
-    return client["dnd_characters"]
+    return client["characters"]
 
 
 def insert_character(collection_name, char_to_save:dict):
@@ -65,7 +66,7 @@ def insert_multiple_characters(collection, chars_to_save:list):
 
 def process_character_batch(db_collection, batch_ids:list):
     start_time = time.time()
-    logging.info(f"Staring batch...")
+    logging.info(f"Starting batch...")
 
     try:
 
