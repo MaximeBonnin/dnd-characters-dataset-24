@@ -89,7 +89,7 @@ def process_character_batch(db_collection, batch_ids:list):
             except Exception as e:
                 logging.error(e)
 
-        logging.info(f"[{round(time.time()-start_time, 2)}] {n_successful} ({round(n_successful/len(batch_ids), 2)}%) successful")
+        logging.info(f"[{round(time.time()-start_time, 2)}] {n_successful} ({round(n_successful/len(batch_ids) * 100, 2)}%) successful")
 
         # save batch to DB
         logging.info(f"[{round(time.time()-start_time, 2)}] Saving data...")

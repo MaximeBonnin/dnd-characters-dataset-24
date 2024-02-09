@@ -35,5 +35,12 @@ According to [this article on dndbeyond](https://www.dndbeyond.com/posts/1648-20
 
 My first few tests tell me that it takes about 30 seconds to get 10.000 characters on my local machine. This would equal about 40 hours or so of running perfectly smooth to get 50 million characters. Doesn't sound impossible but I would really like to try and get this whole thing to run on a GCP cluster or maybe as a batch job in Cloud Run. 
 
-So I set up a GCP VM (E2 with basic settings and allow HTTPs) hosted in the US because I assume that the dndbeyond servers are there as well. I Have also added the IP-Address of this VM to the allowed IPs for my MongoDB collection. I wrote down all steps after the creation of the VM in [deployme.sh](deployme.sh) so anyone can follow. Basically it installs all required tools, clones this repo and then runs the script. Now it is just a question of time until I have all the data...
+So I set up a GCP VM (E2 with basic settings and allow HTTPs) hosted in the US because I assume that the dndbeyond servers are there as well. I wrote down all steps after the creation of the VM in [deployme.sh](deployme.sh) so anyone can follow. Basically it installs all required tools, clones this repo and then runs the script. Now it is just a question of time until I have all the data.
+
+## Actually get the data
+This was not as easy as I had hoped. I initially used a MongoDB Atlas serverless instance. This a big mistake. The way the script is written, it sent 40 Million writes to the DB which cost me about 120$ over he span of a few hours while I was sleeping. So I stopped my script and looked for an alternative.
+
+What I landed on was to simply host a mongoDB instance on another VM in the same GCP Zone. This doesn't incur any addidional costs since I still have my free credits from google cloud. It did require some setup but was very managable. I used a 250GB SSD for this instance as the 40 million characters I had collected in my first attempt already took up about 50GB of space.
+
+The writes were becoming very slow after a a few hours of letting my script run and after some searching I found that creating an index by running `db.characters.createIndex({ char_id: 1 })` solved this issue. If I understand correctly, it was caused by the DB searching for the Character ID every time I inserted a new character, which meant searching though millions of documents for each of 10.000 Characters per batch - obviously a slow process.
 
