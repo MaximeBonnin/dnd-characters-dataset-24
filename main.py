@@ -44,8 +44,7 @@ def insert_character(collection_name, char_to_save:dict):
         logging.error(e)
 
 
-def insert_multiple_characters(collection, chars_to_save:list):
-    # Preparing bulk operations
+def insert_multiple_characters(collection, chars_to_save:list, successful:int):
     bulk_operations = []
     for data in chars_to_save:
         # Assuming each `data` item is a dictionary and has 'char_id'
@@ -72,21 +71,29 @@ def process_character_batch(db_collection, batch_ids:list):
 
         # get all info
         logging.info(f"[{round(time.time()-start_time, 2)}] Getting data...")
-        reponse_list = asyncio.run(get_chars_by_id(batch_ids))
+        response_list = asyncio.run(get_chars_by_id(batch_ids))
 
         # parse characters
         logging.info(f"[{round(time.time()-start_time, 2)}] Parsing data...")
         list_of_parsed_characters = []
-        for c in reponse_list:
+        n_successful=0
+        for c in response_list:
+            # count successes
+            status_code = c[1]
+            if status_code == 200:
+                n_successful += 1
+
             try:
                 parsed_char = parse_character(reponse_tuple=c)
                 list_of_parsed_characters.append(parsed_char)
             except Exception as e:
                 logging.error(e)
 
+        logging.info(f"[{round(time.time()-start_time, 2)}] {n_successful} ({round(n_successful/len(batch_ids), 2)}%) successful")
+
         # save batch to DB
         logging.info(f"[{round(time.time()-start_time, 2)}] Saving data...")
-        insert_multiple_characters(collection=db_collection, chars_to_save=list_of_parsed_characters)
+        insert_multiple_characters(collection=db_collection, chars_to_save=list_of_parsed_characters, successful=n_successful)
 
         logging.info(f"[{round(time.time()-start_time, 2)}] Batch done")
 
